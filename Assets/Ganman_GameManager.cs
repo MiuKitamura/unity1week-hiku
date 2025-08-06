@@ -35,6 +35,7 @@ public class Ganman_GameManager : MonoBehaviour
         // ŽžŠÔ‚É‚È‚Á‚½
         if(time > fireTime) {
             fireText.text = "FIRE!!";
+            fireText.color = Color.red;
 
             if(time > fireTime + 0.3f) {
                 you.Down(-300.0f);
