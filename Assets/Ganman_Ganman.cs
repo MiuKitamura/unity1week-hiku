@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ganman_Ganman : MonoBehaviour
+public class ganman_Ganman : MonoBehaviour
 {
     Rigidbody2D rb;
     // Start is called before the first frame update

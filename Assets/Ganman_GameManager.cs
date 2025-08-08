@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Ganman_GameManager : MonoBehaviour
+public class ganman_GameManager : MonoBehaviour
 {
     public float fireTime;
     public float time;
 
     public Text fireText;
 
-    public Ganman_Ganman you, enemy;
+    public ganman_Ganman you, enemy;
 
     public bool isEnd;
 
