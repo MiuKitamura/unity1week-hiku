@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ganman_GameManager : MonoBehaviour
 {
+    public FadeInOut fade;
+
     public float fireTime;
     public float time;
 
@@ -20,7 +22,7 @@ public class ganman_GameManager : MonoBehaviour
         fireTime = Random.Range(3.0f, 7.0f);
         time = 0.0f;
 
-        fireText.text = "WAIT...";
+        fireText.text = "ˆø‚«‹à‚ð...";
 
         isEnd = false;
     }
@@ -34,7 +36,7 @@ public class ganman_GameManager : MonoBehaviour
 
         // ŽžŠÔ‚É‚È‚Á‚½
         if(time > fireTime) {
-            fireText.text = "FIRE!!";
+            fireText.text = "ˆø‚¯!!";
             fireText.color = Color.red;
 
             if(time > fireTime + 0.3f) {
@@ -53,6 +55,8 @@ public class ganman_GameManager : MonoBehaviour
         if(time > fireTime && time <= fireTime + 0.5f) {
             enemy.Down(300.0f);
             isEnd = true;
+
+            StartCoroutine(fade.GameEnd());
         }
     }
 }
