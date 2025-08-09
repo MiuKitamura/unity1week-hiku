@@ -27,7 +27,7 @@ public class titele_PullToAppearObjectScript : MonoBehaviour
 
             Debug.Log("•\Ž¦‚µ‚½‚æ");
 
-            objectToAppear.GetComponent<UnityEngine.UI.Text>().enabled = true;  // ”ñ•\Ž¦
+            objectToAppear.GetComponent<UnityEngine.UI.Text>().enabled = true;  // •\Ž¦
 
             isAppear = true;
 
