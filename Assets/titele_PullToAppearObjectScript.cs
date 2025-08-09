@@ -31,6 +31,7 @@ public class titele_PullToAppearObjectScript : MonoBehaviour
 
             isAppear = true;
 
+            FindObjectOfType<titele_BgmController>().PlayBGM();
 
         }
 
