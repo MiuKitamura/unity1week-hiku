@@ -10,6 +10,8 @@ public class farm_Pipe : MonoBehaviour
         TypeI,
         TypeL,
         TypeT,
+
+        Goal,
     }
 
     [System.Serializable]
@@ -23,24 +25,39 @@ public class farm_Pipe : MonoBehaviour
     public bool tatchPipe;
     public bool inWater;
 
-    [SerializeField] PipeType type;
+    [SerializeField] public PipeType type;
     public farm_Pipe left, right, up, bottom;
     public float rot;
 
-    public SpriteRenderer sprite;
     public GameObject water;
+
+    RectTransform rect;
 
     // Start is called before the first frame update
     void Start()
     {
-        inWater = false;
+        //inWater = false;
+        
 
         if(tatchPipe) {
+            GetComponent<Image>().enabled = true;
             GetComponent<Button>().enabled = true;
         }
         else {
+            GetComponent<Image>().enabled = false;
             GetComponent<Button>().enabled = false;
         }
+
+        //water.SetActive(inWater);
+
+        
+    }
+
+    public void Init() {
+        rect = GetComponent<RectTransform>();
+        rot = rect.rotation.eulerAngles.z;
+        if(rot == 270) rot = -90;
+        Debug.Log(rot);
     }
 
     // Update is called once per frame
@@ -50,71 +67,77 @@ public class farm_Pipe : MonoBehaviour
     }
 
     public bool GetJoint(Direct direct) {
+        int roti = Mathf.FloorToInt(rot);
+
+        if(type == PipeType.Goal) {
+            return true;
+        }
+
         switch(direct) {
             case Direct.Left:
                 if(type == PipeType.TypeI) {
-                    if((int)rot == 0 || (int)rot == 180) {
+                    if((int)roti == 0 || (int)roti == 180) {
                         return true;
                     }
                 }
                 else if(type == PipeType.TypeL) {
-                    if((int)rot == 0 || (int)rot == -90) {
+                    if((int)roti == 0 || (int)roti == -90) {
                         return true;
                     }
                 }
                 else if(type == PipeType.TypeT) {
-                    if((int)rot != 90) {
+                    if((int)roti != 90) {
                         return true;
                     }
                 }
                 break;
             case Direct.Right:
                 if(type == PipeType.TypeI) {
-                    if((int)rot == 0 || (int)rot == 180) {
+                    if((int)roti == 0 || (int)roti == 180) {
                         return true;
                     }
                 }
                 else if(type == PipeType.TypeL) {
-                    if((int)rot == 90 || (int)rot == 180) {
+                    if((int)roti == 90 || (int)roti == 180) {
                         return true;
                     }
                 }
                 else if(type == PipeType.TypeT) {
-                    if((int)rot != -90) {
+                    if((int)roti != -90) {
                         return true;
                     }
                 }
                 break;
             case Direct.Up:
                 if(type == PipeType.TypeI) {
-                    if((int)rot == 90 || (int)rot == -90) {
+                    if((int)roti == 90 || (int)roti == -90) {
                         return true;
                     }
                 }
                 else if(type == PipeType.TypeL) {
-                    if((int)rot == -90 || (int)rot == 180) {
+                    if((int)roti == -90 || (int)roti == 180) {
                         return true;
                     }
                 }
                 else if(type == PipeType.TypeT) {
-                    if((int)rot != 0) {
+                    if((int)roti != 0) {
                         return true;
                     }
                 }
                 break;
             case Direct.Bottom:
                 if(type == PipeType.TypeI) {
-                    if((int)rot == 90 || (int)rot == -90) {
+                    if((int)roti == 90 || (int)roti == -90) {
                         return true;
                     }
                 }
                 else if(type == PipeType.TypeL) {
-                    if((int)rot == 90 || (int)rot == 0) {
+                    if((int)roti == 90 || (int)roti == 0) {
                         return true;
                     }
                 }
                 else if(type == PipeType.TypeT) {
-                    if((int)rot != 180) {
+                    if((int)roti != 180) {
                         return true;
                     }
                 }
@@ -124,45 +147,37 @@ public class farm_Pipe : MonoBehaviour
         return false;
     }
 
-    public void CheckInWater() {
-        inWater = false;
-
+    // …‚ðˆø‚­
+    public void DrawWater() {
+        inWater = true;
+        water.gameObject.SetActive(true);
+        
+        // Œq‚ª‚Á‚Ä‚¢‚é‘¼‚Ì…˜H‚É‚à…‚ð—¬‚·
         if(left != null) {
-            if(left.GetJoint(Direct.Right) && GetJoint(Direct.Left)) {
-                inWater = true;
-
-                if(!left.inWater) {
-                    left.CheckInWater();
-                }
+            if(!left.inWater && left.GetJoint(Direct.Right) && GetJoint(Direct.Left)) {
+                left.DrawWater();
             }
         }
         if(right != null) {
-            if(right.GetJoint(Direct.Left) && GetJoint(Direct.Right)) {
-                inWater = true;
-
-                if(!right.inWater) {
-                    right.CheckInWater();
-                }
+            if(!right.inWater && right.GetJoint(Direct.Left) && GetJoint(Direct.Right)) {
+                right.DrawWater();
             }
         }
         if(up != null) {
-            if(up.GetJoint(Direct.Bottom) && GetJoint(Direct.Up)) {
-                inWater = true;
-
-                if(!up.inWater) {
-                    up.CheckInWater();
-                }
+            if(!up.inWater && up.GetJoint(Direct.Bottom) && GetJoint(Direct.Up)) {
+                up.DrawWater();
             }
         }
         if(bottom != null) {
-            if(bottom.GetJoint(Direct.Up) && GetJoint(Direct.Bottom)) {
-                inWater = true;
-
-                if(!bottom.inWater) {
-                    bottom.CheckInWater();
-                }
+            if(!bottom.inWater && bottom.GetJoint(Direct.Up) && GetJoint(Direct.Bottom)) {
+                bottom.DrawWater();
             }
         }
+    }
+
+    public void ResetWater() {
+        inWater = false;
+        water.gameObject.SetActive(false);
     }
 
     public void OnClick() {
@@ -171,5 +186,8 @@ public class farm_Pipe : MonoBehaviour
         if(rot > 190.0f) {
             rot = -90.0f;
         }
+
+        rect.rotation = Quaternion.Euler(0.0f, 0.0f, rot);
+        farm_WaterSource.instance.RotValve();
     }
 }
