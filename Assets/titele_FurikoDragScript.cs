@@ -11,10 +11,13 @@ public class titele_FurikoDragScript : MonoBehaviour
     private bool isDragging = false;//掴んでいるか
     private Vector2 dragOffset;
 
-    public bool isPull=false;//引っ張ったか
+    public bool isPull=false;//1回でも引っ張ったらtrue
     public float pullBorder_Y;//引っ張り判定の境界ライン値
     public int pullCnt = 0;//引っ張った回数
 
+    public bool nowPull = false;//今引っ張られているか
+
+  
 
     void Update()
     {
@@ -45,6 +48,16 @@ public class titele_FurikoDragScript : MonoBehaviour
 
             // 物理挙動再開
             endPointRigidbody.isKinematic = false;
+
+            if (nowPull ==true)
+            {
+                pullCnt++;
+
+                FindFirstObjectByType<titele_SeController>().PlaySE();
+
+            }
+
+
         }
 
         // ドラッグ中は終点をマウスについてくる
@@ -62,10 +75,16 @@ public class titele_FurikoDragScript : MonoBehaviour
         {
 
             isPull = true;
-            pullCnt++;
+            nowPull = true;
+
+
+            
 
         }
-
+        else
+        {
+            nowPull = false;
+        }
 
 
     }
