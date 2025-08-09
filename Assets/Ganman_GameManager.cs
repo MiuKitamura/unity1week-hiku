@@ -42,6 +42,10 @@ public class ganman_GameManager : MonoBehaviour
                 isEnd = true;
             }
         }
+
+        if(Input.GetMouseButtonDown(0)) {
+            OnClickShot();
+        }
     }
 
     public void OnClickShot() {
