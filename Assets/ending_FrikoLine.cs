@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class titele_FurikoLineScript : MonoBehaviour
+public class ending_FrikoLine : MonoBehaviour
 {
-
     [SerializeField] LineRenderer lineRenderer;//‚Ç‚Ìü‚ğg‚¤‚©
     [SerializeField] Transform startPoint;//²
     [SerializeField] Transform endPoint;//U‚èq
