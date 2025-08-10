@@ -911,6 +911,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeSpeed: 2
   ChangePict: {fileID: 1216702111}
+  ColorChange:
+  - {fileID: 550857626}
+  - {fileID: 439115016}
+  - {fileID: 1429974090}
+  - {fileID: 1381524354}
+  - {fileID: 900499987}
+  - {fileID: 1190181177}
+  - {fileID: 1793962275}
+  ToonColorChanges: {fileID: 225606653}
 --- !u!1 &681319021
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,6 +933,9 @@ GameObject:
   - component: {fileID: 681319025}
   - component: {fileID: 681319024}
   - component: {fileID: 681319026}
+  - component: {fileID: 681319028}
+  - component: {fileID: 681319027}
+  - component: {fileID: 681319029}
   m_Layer: 7
   m_Name: onpu_1
   m_TagString: onpu
@@ -1078,6 +1090,57 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!111 &681319027
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681319021}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: eca0f49e910b4ab43882e4fe2817b16a, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: eca0f49e910b4ab43882e4fe2817b16a, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
+--- !u!95 &681319028
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681319021}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0e0c6d9118c21ff4ebe2e9b2ec92ce7e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &681319029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681319021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b25c809642de4dd468bdf0a50e61b0dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &708909787
 GameObject:
   m_ObjectHideFlags: 0
@@ -2549,7 +2612,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.533
+  m_Volume: 0.175
   m_Pitch: 1
   Loop: 0
   Mute: 0

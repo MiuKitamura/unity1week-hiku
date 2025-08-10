@@ -10,10 +10,14 @@ public class piano_MouseClick : MonoBehaviour
     public bool isDragging = false;
     private Vector2 offset;
 
+    private Animation Animation;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         if (mainCamera == null) mainCamera = Camera.main;
+    
+        Animation = GetComponent<Animation>();
     }
 
     void Update()
@@ -26,6 +30,12 @@ public class piano_MouseClick : MonoBehaviour
             Collider2D hit = Physics2D.OverlapPoint(mousePos);
             if (hit != null && hit.gameObject == gameObject)
             {
+                if(!(Animation == null))
+                {
+                    Animation.Stop(); // 再生中のアニメーションを止める
+                }
+                
+
                 isDragging = true;
                 offset = (Vector2)transform.position - mousePos;
             }

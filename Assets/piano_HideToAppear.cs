@@ -11,6 +11,9 @@ public class piano_HideToAppear : MonoBehaviour
 
     public piano_ChangePict ChangePict;
 
+    public piano_ColorChange[] ColorChange;//インスペクターでセットする　＜音符の方＞
+    public piano_ToonColorChange ToonColorChanges;//ト音記号
+
 
     void Start()
     {
@@ -23,8 +26,16 @@ public class piano_HideToAppear : MonoBehaviour
     void Update()
     {
 
-        if(ChangePict.isClear ==true)
-        {
+        if (ColorChange[0].isHit == true &&
+            ColorChange[1].isHit == true &&
+            ColorChange[2].isHit == true &&
+            ColorChange[3].isHit == true &&
+            ColorChange[4].isHit == true &&
+            ColorChange[5].isHit == true &&
+            ColorChange[6].isHit == true &&
+            ToonColorChanges.isHit == true)
+        { 
+            
             // alpha値を徐々に増やす
             color.a += fadeSpeed * Time.deltaTime;
             sr.color = color;
