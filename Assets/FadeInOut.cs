@@ -22,6 +22,7 @@ public class FadeInOut : MonoBehaviour
 
         // パネルを表示
         panel.gameObject.SetActive(true);
+        panel.enabled = true;
 
         // 色を不透明に
         startColor.a = 1.0f;
