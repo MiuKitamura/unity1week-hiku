@@ -29,7 +29,9 @@ public class minus_MouseClickDrop : MonoBehaviour
                 //‰º‚É—Ž‰º‚·‚é
                 rb.gravityScale = 1.0f;
 
-               
+                //Œø‰Ê‰¹
+                FindFirstObjectByType<minus_SE_ToP>().PlaySE();
+
                 isChangeToMinus =true;
 
 

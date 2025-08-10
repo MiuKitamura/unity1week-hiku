@@ -52,7 +52,7 @@ public class ending_FurikoDrag : MonoBehaviour
             {
                 pullCnt++;
 
-                
+                FindFirstObjectByType<ending_SE_Friko>().PlaySE();
             }
 
 

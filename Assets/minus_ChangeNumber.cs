@@ -33,7 +33,11 @@ public class minus_ChangeNumber : MonoBehaviour
         currentIndex = (currentIndex + 1) % texts.Length;
         ShowText(currentIndex);
 
-        if(currentIndex ==correctCnt)
+        //Œø‰Ê‰¹
+        FindFirstObjectByType<minus_SE_Crick>().PlaySE_Crick();
+
+
+        if (currentIndex ==correctCnt)
         {
             isCorrect = true;
 
