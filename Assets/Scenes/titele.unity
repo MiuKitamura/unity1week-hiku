@@ -213,6 +213,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titele_FurikoDragScript: {fileID: 1375509512}
   objectToAppear: {fileID: 44615574}
+  isAppear: 0
+  bgmController: {fileID: 227919683}
+  isBgmPlayer: 1
 --- !u!1 &227919680
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,6 +718,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titele_FurikoDragScript: {fileID: 1375509512}
   objectToAppear: {fileID: 845002717}
+  isAppear: 0
+  bgmController: {fileID: 0}
+  isBgmPlayer: 0
 --- !u!1 &1012660926
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,7 +1033,7 @@ RectTransform:
   m_GameObject: {fileID: 1243531534}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0619, y: 1.0619, z: 1.0619}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 839930227}

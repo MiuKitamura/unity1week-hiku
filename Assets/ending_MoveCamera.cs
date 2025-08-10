@@ -10,6 +10,8 @@ public class ending_MoveCamera : MonoBehaviour
     public float targetSize = 10f;
 
     public ending_FurikoDrag FurikoDrag;
+    public titele_BgmController BgmController;
+    public bool isBgmOne = false;
 
     public FadeInOut fade;
     public bool isOne = false;
@@ -17,7 +19,10 @@ public class ending_MoveCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (BgmController == null)
+        {
+            BgmController = FindObjectOfType<titele_BgmController>();
+        }
     }
 
     // Update is called once per frame
@@ -27,6 +32,13 @@ public class ending_MoveCamera : MonoBehaviour
         {
             if (mainCamera.orthographicSize< targetSize)
             {
+               if(isBgmOne ==false)
+                {
+                    BgmController.FadeOutAndStop(6);
+                    isBgmOne=true;
+                }
+
+
                 //™X‚ÉzoomƒAƒEƒg
                 mainCamera.orthographicSize += zoomSpeed * Time.deltaTime;
 
@@ -37,30 +49,36 @@ public class ending_MoveCamera : MonoBehaviour
                     if (isOne == false)
                     {
                         isOne = true;
-                        StartCoroutine(ExecuteAfterDelay());
-
+                        StartCoroutine(fade.GameEnd());
+                      
                     }
 
 
                 }
+
+
+
+
+
             }
 
 
         }
 
 
+       
 
 
     }
 
-    IEnumerator ExecuteAfterDelay()
-    {
+    //IEnumerator ExecuteAfterDelay()
+    //{
 
-        yield return new WaitForSeconds(1.5f); // 3•b‘Ò‚Â
-        StartCoroutine(fade.GameEnd());
+    //    yield return new WaitForSeconds(1.5f); // 3•b‘Ò‚Â
+    //    StartCoroutine(fade.GameEnd());
 
 
-    }
+    //}
 
 
 }
