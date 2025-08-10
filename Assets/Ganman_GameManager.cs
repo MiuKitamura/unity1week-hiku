@@ -42,6 +42,8 @@ public class ganman_GameManager : MonoBehaviour
             if(time > fireTime + 0.3f) {
                 you.Down(-300.0f);
                 isEnd = true;
+
+                StartCoroutine(fade.ReStart());
             }
         }
 
@@ -51,6 +53,7 @@ public class ganman_GameManager : MonoBehaviour
     }
 
     public void OnClickShot() {
+        if(isEnd) return;
 
         if(time > fireTime && time <= fireTime + 0.5f) {
             enemy.Down(300.0f);

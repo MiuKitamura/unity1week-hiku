@@ -1010,8 +1010,8 @@ RectTransform:
   - {fileID: 681691506}
   - {fileID: 1606631717}
   - {fileID: 1405846447}
-  - {fileID: 1332938220}
   - {fileID: 1343307416}
+  - {fileID: 1332938220}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1110,9 +1110,9 @@ MonoBehaviour:
   panel: {fileID: 1332938221}
   isStart: 0
   speed: 0.3
-  sceneName: 
+  sceneName: minus
   startColor: {r: 0.47450984, g: 0.21960786, b: 0.19215688, a: 1}
-  endColor: {r: 0.26366144, g: 0.54391855, b: 0.7075472, a: 0}
+  endColor: {r: 0.4117647, g: 0.54901963, b: 0.3882353, a: 0}
 --- !u!1 &1343307415
 GameObject:
   m_ObjectHideFlags: 0

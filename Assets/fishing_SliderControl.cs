@@ -44,6 +44,7 @@ public class fishing_SliderControl : MonoBehaviour
                 player.turizao.AddForce(new Vector2(300.0f,100.0f));
 
                 fishing_GameManager.instance.isEnd = true;
+                StartCoroutine(fishing_GameManager.instance.fade.ReStart());
             }
             else if(sliderValue > 100.0f) { // èüÇø
                 Rigidbody2D rb = fish.GetComponent<Rigidbody2D>();
@@ -52,6 +53,7 @@ public class fishing_SliderControl : MonoBehaviour
                 rb.AddForce(new Vector2(-100.0f, 700.0f));
 
                 fishing_GameManager.instance.isEnd = true;
+                StartCoroutine(fishing_GameManager.instance.fade.GameEnd());
             }
         }
         else {
