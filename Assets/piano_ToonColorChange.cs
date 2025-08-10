@@ -30,6 +30,11 @@ public class piano_ToonColorChange : MonoBehaviour
             sr.sprite = newSprite;
             transform.localScale = desiredScale;//ÉTÉCÉYçáÇÌÇπÇÈ
 
+            //å¯â âπ
+
+            FindFirstObjectByType<piano_SE_piano4>().PlaySE();
+
+
             isHit = true;
 
             collision.gameObject.SetActive(false);

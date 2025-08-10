@@ -42,8 +42,10 @@ public class piano_ChangePict : MonoBehaviour
             if(isOne ==false)
             {
                 isOne = true;
-                StartCoroutine(ExecuteAfterDelay());
                
+                StartCoroutine(LongWait());
+                StartCoroutine(ExecuteAfterDelay());
+
             }
 
           
@@ -56,9 +58,17 @@ public class piano_ChangePict : MonoBehaviour
     IEnumerator ExecuteAfterDelay()
     {
         
-            yield return new WaitForSeconds(1.5f); // 3•b‘Ò‚Â
+            yield return new WaitForSeconds(4.0f); // 3•b‘Ò‚Â
             StartCoroutine(fade.GameEnd());
         
+
+    }
+    IEnumerator LongWait()
+    {
+
+        yield return new WaitForSeconds(1.0f); // 3•b‘Ò‚Â
+        FindFirstObjectByType<piano_SE_pianoLong>().PlayOnceSequence();
+
 
     }
 

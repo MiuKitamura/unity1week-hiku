@@ -38,7 +38,7 @@ public class minus_ClearCircleAppears : MonoBehaviour
 
             isAppear = true;
 
-
+            FindFirstObjectByType<minus_SE_Correct>().PlaySE();
             StartCoroutine(ExecuteAfterDelay());
 
 
@@ -51,7 +51,7 @@ public class minus_ClearCircleAppears : MonoBehaviour
     {
         if(isAppear ==true)
         {
-            yield return new WaitForSeconds(1.5f); // 3•b‘Ò‚Â
+            yield return new WaitForSeconds(1.5f); // 1.5•b‘Ò‚Â
             StartCoroutine(fade.GameEnd());
         }
         
