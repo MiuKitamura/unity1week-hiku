@@ -13,6 +13,10 @@ public class farm_WaterSource : MonoBehaviour
     List<farm_Pipe> pipes = new List<farm_Pipe>();
     List<farm_Pipe> clearPipes = new List<farm_Pipe>();
 
+    public AudioSource audioSource;
+    public AudioClip clickSound;
+    public AudioClip clearSound;
+
     bool isClear = false;
 
 	private void Awake() {
@@ -34,7 +38,15 @@ public class farm_WaterSource : MonoBehaviour
             }
         }
 
-        RotValve();
+        // 水流をリセット
+        foreach(farm_Pipe pipe in pipes) {
+            pipe.ResetWater();
+        }
+
+        // 水を流す
+        if(pipe.GetJoint(farm_Pipe.Direct.Up)) {
+            pipe.DrawWater();
+        }
     }
 
     // Update is called once per frame
@@ -45,13 +57,17 @@ public class farm_WaterSource : MonoBehaviour
 
     // バルブが回された
     public void RotValve() {
+        audioSource.PlayOneShot(clickSound);
+
         // 水流をリセット
         foreach(farm_Pipe pipe in pipes) {
             pipe.ResetWater();
         }
 
         // 水を流す
-        pipe.DrawWater();
+        if(pipe.GetJoint(farm_Pipe.Direct.Up)) {
+            pipe.DrawWater();
+        }
 
         StartCoroutine(CheckClear());
     }
@@ -70,6 +86,7 @@ public class farm_WaterSource : MonoBehaviour
         if(isClear) {
             Debug.Log("クリア！！");
             fade.StartCoroutine(fade.GameEnd());
+            audioSource.PlayOneShot(clearSound);
         }
     }
 }
