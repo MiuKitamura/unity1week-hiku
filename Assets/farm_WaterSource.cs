@@ -6,6 +6,8 @@ public class farm_WaterSource : MonoBehaviour
 {
     public static farm_WaterSource instance;
 
+    public FadeInOut fade;
+
     public farm_Pipe pipe;
     public Transform pipesParent;
     List<farm_Pipe> pipes = new List<farm_Pipe>();
@@ -67,6 +69,7 @@ public class farm_WaterSource : MonoBehaviour
 
         if(isClear) {
             Debug.Log("クリア！！");
+            fade.StartCoroutine(fade.GameEnd());
         }
     }
 }

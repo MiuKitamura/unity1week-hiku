@@ -22,6 +22,7 @@ public class FadeInOut : MonoBehaviour
 
         // パネルを表示
         panel.gameObject.SetActive(true);
+        panel.enabled = true;
 
         // 色を不透明に
         startColor.a = 1.0f;
@@ -44,7 +45,8 @@ public class FadeInOut : MonoBehaviour
 
             if(startColor.a < 0.0f) {
                 isStart = true;
-                panel.gameObject.SetActive(false);
+                //panel.gameObject.SetActive(false);
+                panel.enabled = false;
                 break;
             }
 
@@ -55,7 +57,8 @@ public class FadeInOut : MonoBehaviour
     public IEnumerator GameEnd() {
 
         endColor.a = 0.0f;
-        panel.gameObject.SetActive(true);
+        //panel.gameObject.SetActive(true);
+        panel.enabled = true;
 
         while(true) {
             endColor.a += Time.deltaTime * speed;
@@ -73,14 +76,16 @@ public class FadeInOut : MonoBehaviour
     public IEnumerator ReStart() {
 
         startColor.a = 0.0f;
-        panel.gameObject.SetActive(true);
+        //panel.gameObject.SetActive(true);
+        panel.enabled = true;
 
         while(true) {
             startColor.a += Time.deltaTime * speed;
             panel.color = startColor;
 
-            if(endColor.a > 1.0f) {
-                SceneManager.LoadScene(sceneName);
+            if(startColor.a > 1.0f) {
+                // 現在のシーンを再読み込み
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 break;
             }
 

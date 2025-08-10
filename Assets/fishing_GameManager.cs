@@ -5,6 +5,7 @@ using UnityEngine;
 public class fishing_GameManager : MonoBehaviour
 {
     public bool isEnd = false;
+    public FadeInOut fade;
 
     public static fishing_GameManager instance;
 	private void Awake() {
