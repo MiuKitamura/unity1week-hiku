@@ -13,6 +13,8 @@ public class piano_ChangePict : MonoBehaviour
 
     public Vector3 desiredScale = new Vector3(1, 1, 1);
 
+    public FadeInOut fade;
+    public bool isOne = false;
 
     void Start()
     {
@@ -37,14 +39,29 @@ public class piano_ChangePict : MonoBehaviour
 
             isClear = true;
 
+            if(isOne ==false)
+            {
+                isOne = true;
+                StartCoroutine(ExecuteAfterDelay());
+               
+            }
+
+          
 
         }
 
 
 
     }
+    IEnumerator ExecuteAfterDelay()
+    {
+        
+            yield return new WaitForSeconds(1.5f); // 3•b‘Ò‚Â
+            StartCoroutine(fade.GameEnd());
+        
+
+    }
 
 
 
-   
 }

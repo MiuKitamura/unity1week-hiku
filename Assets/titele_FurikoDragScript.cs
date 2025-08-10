@@ -17,7 +17,10 @@ public class titele_FurikoDragScript : MonoBehaviour
 
     public bool nowPull = false;//¡ˆø‚Á’£‚ç‚ê‚Ä‚¢‚é‚©
 
-  
+    public FadeInOut fade;
+    public bool isOne = false;
+
+
 
     void Update()
     {
@@ -86,6 +89,18 @@ public class titele_FurikoDragScript : MonoBehaviour
             nowPull = false;
         }
 
+        if(pullCnt>=2)
+        {
+            if(isOne ==false)
+            {
+                StartCoroutine(fade.GameEnd());
+
+                isOne = true;
+            }
+            
+
+
+        }
 
     }
 }

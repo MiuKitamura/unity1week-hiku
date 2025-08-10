@@ -12,6 +12,9 @@ public class minus_ClearCircleAppears : MonoBehaviour
 
     private bool isAppear = false;//ˆê‰ñ‚¾‚¯ŒÄ‚Ô—p
 
+    public FadeInOut fade;
+   
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +38,24 @@ public class minus_ClearCircleAppears : MonoBehaviour
 
             isAppear = true;
 
+
+            StartCoroutine(ExecuteAfterDelay());
+
+
+
         }
         
     }
+
+    IEnumerator ExecuteAfterDelay()
+    {
+        if(isAppear ==true)
+        {
+            yield return new WaitForSeconds(1.5f); // 3•b‘Ò‚Â
+            StartCoroutine(fade.GameEnd());
+        }
+        
+    }
+
+
 }

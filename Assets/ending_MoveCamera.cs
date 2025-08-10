@@ -11,8 +11,8 @@ public class ending_MoveCamera : MonoBehaviour
 
     public ending_FurikoDrag FurikoDrag;
 
-
-
+    public FadeInOut fade;
+    public bool isOne = false;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +33,15 @@ public class ending_MoveCamera : MonoBehaviour
                 if (mainCamera.orthographicSize > targetSize)
                 {
                     mainCamera.orthographicSize = targetSize;
+
+                    if (isOne == false)
+                    {
+                        isOne = true;
+                        StartCoroutine(ExecuteAfterDelay());
+
+                    }
+
+
                 }
             }
 
@@ -41,5 +50,17 @@ public class ending_MoveCamera : MonoBehaviour
 
 
 
+
     }
+
+    IEnumerator ExecuteAfterDelay()
+    {
+
+        yield return new WaitForSeconds(1.5f); // 3•b‘Ò‚Â
+        StartCoroutine(fade.GameEnd());
+
+
+    }
+
+
 }

@@ -9,7 +9,22 @@ EditorBuildSettings:
     path: Assets/Scenes/titele.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/farm.unity
+    guid: 5fa4d9c061b42bb468f6819e07c10335
+  - enabled: 1
     path: Assets/Scenes/ganman.unity
     guid: 1973ac6193d8a3d449ddb8269def1183
+  - enabled: 1
+    path: Assets/Scenes/minus.unity
+    guid: 013dbe59599e5a74db5a0ff19074cccc
+  - enabled: 1
+    path: Assets/Scenes/Fishing.unity
+    guid: a49ba5c0d0331654981baa95b230dd80
+  - enabled: 1
+    path: Assets/Scenes/piano.unity
+    guid: 85a2287ba93df564999348d33a243933
+  - enabled: 1
+    path: Assets/Scenes/ending.unity
+    guid: dd30d83bf29e8f0479377c70bcc7fea8
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
