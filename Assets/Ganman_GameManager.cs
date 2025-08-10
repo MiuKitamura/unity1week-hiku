@@ -16,10 +16,15 @@ public class ganman_GameManager : MonoBehaviour
 
     public bool isEnd;
 
+    AudioSource source;
+    public AudioClip shotSound, missSound;
+
     // Start is called before the first frame update
     void Start()
     {
-        fireTime = Random.Range(3.0f, 7.0f);
+        source = GetComponent<AudioSource>();
+
+        fireTime = Random.Range(2.0f, 6.0f);
         time = 0.0f;
 
         fireText.text = "ˆø‚«‹à‚ð...";
@@ -31,6 +36,7 @@ public class ganman_GameManager : MonoBehaviour
     void Update()
     {
         if(isEnd) return;
+        if(!fade.isStart) return;
 
         time += Time.deltaTime;
 
@@ -40,10 +46,11 @@ public class ganman_GameManager : MonoBehaviour
             fireText.color = Color.red;
 
             if(time > fireTime + 0.3f) {
-                you.Down(-300.0f);
+                enemy.Shot(-1500.0f);
                 isEnd = true;
 
                 StartCoroutine(fade.ReStart());
+                source.PlayOneShot(shotSound);
             }
         }
 
@@ -54,12 +61,29 @@ public class ganman_GameManager : MonoBehaviour
 
     public void OnClickShot() {
         if(isEnd) return;
+        if(!fade.isStart) return;
 
         if(time > fireTime && time <= fireTime + 0.5f) {
-            enemy.Down(300.0f);
+            you.Shot(1500.0f);
             isEnd = true;
 
             StartCoroutine(fade.GameEnd());
+            source.PlayOneShot(shotSound);
         }
+        else {
+            source.PlayOneShot(missSound);
+
+            StartCoroutine(ReturnBullet());
+        }
+    }
+
+    IEnumerator ReturnBullet() {
+        yield return new WaitForSeconds(0.05f);
+
+        enemy.Shot(-1500.0f);
+        isEnd = true;
+
+        StartCoroutine(fade.ReStart());
+        source.PlayOneShot(shotSound);
     }
 }

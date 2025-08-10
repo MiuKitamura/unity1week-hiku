@@ -13,6 +13,8 @@ public class fishing_SliderControl : MonoBehaviour
     public fishing_PlayerControl player;
     public Transform fishSliderPointMin, fishSliderPointMax;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,8 @@ public class fishing_SliderControl : MonoBehaviour
             // ‹›‚ÌˆÊ’uXV
             fish.transform.position = Vector2.Lerp(fishSliderPointMin.position, fishSliderPointMax.position, 1.0f - (sliderValue / 100.0f));
 
+            fishing_GameManager.instance.StartBaysasya();
+
             // Œˆ’…”»’è
             if(sliderValue < 0.0f) { // •‰‚¯
                 player.turizao.transform.parent = null;
@@ -45,6 +49,8 @@ public class fishing_SliderControl : MonoBehaviour
 
                 fishing_GameManager.instance.isEnd = true;
                 StartCoroutine(fishing_GameManager.instance.fade.ReStart());
+
+                fishing_GameManager.instance.source.Stop();
             }
             else if(sliderValue > 100.0f) { // Ÿ‚¿
                 Rigidbody2D rb = fish.GetComponent<Rigidbody2D>();
@@ -54,6 +60,9 @@ public class fishing_SliderControl : MonoBehaviour
 
                 fishing_GameManager.instance.isEnd = true;
                 StartCoroutine(fishing_GameManager.instance.fade.GameEnd());
+
+                fishing_GameManager.instance.source.Stop();
+                fishing_GameManager.instance.source.PlayOneShot(fishing_GameManager.instance.clearSound);
             }
         }
         else {
