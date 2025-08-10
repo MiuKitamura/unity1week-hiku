@@ -36,4 +36,26 @@ public class titele_BgmController : MonoBehaviour
         if (audioSource.isPlaying)
             audioSource.Stop();
     }
+
+
+    public void FadeOutAndStop(float duration)//‰¹—Ê¬‚³‚­‚µ‚ÄÅI“I‚ÉÁ‚·
+    {
+        StartCoroutine(FadeOutAndStopCoroutine(duration));
+    }
+
+    private IEnumerator FadeOutAndStopCoroutine(float duration)
+    {
+        float startVolume = audioSource.volume;
+
+        while (audioSource.volume > 0f)
+        {
+            audioSource.volume -= startVolume * Time.deltaTime / duration;
+            yield return null;
+        }
+
+        audioSource.volume = 0f;
+        audioSource.Stop();
+        audioSource.volume = startVolume; // Ÿ‰ñÄ¶—p‚ÉŒ³‚Ì‰¹—Ê‚ğ–ß‚·
+    }
+
 }

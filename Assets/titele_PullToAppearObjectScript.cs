@@ -9,11 +9,24 @@ public class titele_PullToAppearObjectScript : MonoBehaviour
 
     public GameObject objectToAppear;//表示にするオブジェクト
 
-    private bool isAppear = false;//一回だけ呼ぶ用
+    public bool isAppear = false;//一回だけ呼ぶ用
+
+    public titele_BgmController bgmController;
+
+    public bool isBgmPlayer = false;  // インスペクターで一つだけチェック
+
 
     void Start()
     {
         objectToAppear.GetComponent<UnityEngine.UI.Text>().enabled = false;  // 非表示
+
+        
+
+        if (isBgmPlayer == true)
+        {
+            bgmController = FindObjectOfType<titele_BgmController>();
+        }
+
     }
     
 
@@ -30,10 +43,19 @@ public class titele_PullToAppearObjectScript : MonoBehaviour
             objectToAppear.GetComponent<UnityEngine.UI.Text>().enabled = true;  // 表示
 
             isAppear = true;
+            if(!(bgmController ==null)&&isBgmPlayer ==true)
+            {
+                Debug.Log("曲ながす");
 
-            FindObjectOfType<titele_BgmController>().PlayBGM();
+
+                bgmController.PlayBGM();
+
+
+            }
+            
 
         }
+        
 
 
 
